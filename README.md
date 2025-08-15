@@ -37,6 +37,10 @@ Modular structure:
 - `modules/dateSelectors.js` – UI helpers
 - `modules/selectGestationalAgeCriteria.js` – dynamic form behavior
 
+## 🧾 Original Version
+
+You can still view the original version in the [legacy](https://github.com/priscillahaibara/obstetric-calculator/tree/legacy) branch.  
+
 ## 📦 Installation (for development)
 
 ```bash
