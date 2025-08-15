@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Obstetric Calculator is a digital tool designed to assist healthcare professionals in calculating the current gestational age, the estimated due date (EDD), and converting the pregnancy into obstetric months. It is based on the date of the last menstrual period (LMP) or data from a previous ultrasound examination."
+    />
+
+    <link rel="shortcut icon" href="favicon_pregnant.png" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="styles.css" rel="stylesheet" />
+
+    <title>Obstetric Calculator</title>
+  </head>
+
+  <body>
+    <header>
+      <a href="#">
+        <img class="logo" alt="Priscilla Haibara Logo" src="./img/logo.png" />
+      </a>
+    </header>
+
+    <main>
+      <section class="title-container">
+        <h1 class="h1">Obstetric Calculator</h1>
+      </section>
+
+      <form>
+        <fieldset>
+          <legend class="h2">Criteria for Gestational Age Calculation</legend>
+          <select
+            class="select-criteria"
+            aria-label="Select the Criteria"
+            required
+          >
+            <option value="">-- Select the Criteria --</option>
+            <option value="last-menstrual-period">Last Menstrual Period</option>
+            <option value="ultrasound">Ultrasound</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="current-date-field">
+          <legend class="h2">Current Date</legend>
+          <div>
+            <select
+              id="current-month"
+              name="current-month"
+              aria-label="Current month"
+              required
+            ></select>
+            <select
+              id="current-day"
+              name="current-day"
+              aria-label="Current day"
+              required
+            ></select>
+            <select
+              id="current-year"
+              name="current-year"
+              aria-label="Current year"
+              required
+            ></select>
+          </div>
+        </fieldset>
+
+        <fieldset class="lmp-field">
+          <legend class="h2">Date of Last Menstrual Period</legend>
+          <div>
+            <select
+              id="lmp-month"
+              name="lmp-month"
+              aria-label="Last menstrual period month"
+              required
+            ></select>
+            <select
+              id="lmp-day"
+              name="lmp-day"
+              aria-label="Last menstrual period day"
+              required
+            ></select>
+            <select
+              id="lmp-year"
+              name="lmp-year"
+              aria-label="Last menstrual period year"
+              required
+            ></select>
+          </div>
+        </fieldset>
+
+        <fieldset class="ultrasound-field">
+          <div>
+            <h2 class="h2">Date of Ultrasound</h2>
+            <select
+              id="usg-month"
+              name="usg-month"
+              aria-label="Ultrasound month"
+              required
+            ></select>
+            <select
+              id="usg-day"
+              name="usg-day"
+              aria-label="Ultrasound day"
+              required
+            ></select>
+            <select
+              id="usg-year"
+              name="usg-year"
+              aria-label="Ultrasound year"
+              required
+            ></select>
+          </div>
+
+          <div>
+            <h2 class="h2">Estimated Gestational Age by Ultrasound</h2>
+            <input
+              id="usg-weeks"
+              name="usg-weeks"
+              type="number"
+              placeholder="Weeks"
+              min="0"
+              max="45"
+              aria-label="Estimated gestational age (weeks)"
+              required
+            />
+            <input
+              id="usg-days"
+              name="usg-days"
+              type="number"
+              placeholder="Days"
+              min="0"
+              max="6"
+              aria-label="Estimated gestational age (days)"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <fieldset class="result">
+          <legend class="h2">Result</legend>
+          <div>
+            <p class="p gestational-age-output"></p>
+            <p class="p due-date-output"></p>
+          </div>
+        </fieldset>
+
+        <button class="calculate-button" type="submit">Calculate</button>
+      </form>
+    </main>
+
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
