@@ -53,6 +53,10 @@ input {
   border-radius: 2px;
 }
 
+select:focus {
+  border-bottom: 2px solid #000; 
+}
+
 h1 {
   font-size: 4.4rem;
 }
@@ -70,9 +74,8 @@ p {
 }
 
 .calculator__title {
-  margin-bottom: 0.8rem;
   padding-left: 0.8rem;
-  margin-bottom: 1.2rem;
+  margin: 0.8rem 0 1.6rem 0;
 }
 
 .calculator__legend,
@@ -109,7 +112,7 @@ p {
 .calculator__fieldset--ultrasound,
 .calculator__fieldset--result,
 .calculator__button {
-  display: block;
+  display: none;
 }
 
 @supports (-webkit-overflow-scrolling: touch) {
@@ -131,6 +134,4 @@ p {
     background-position: right 0.8rem center;
     background-size: 0.8rem auto;
   }
-
-
 }
