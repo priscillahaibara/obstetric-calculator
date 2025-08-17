@@ -5,4 +5,4 @@ import { setupDateSelectorByPrefix } from "./js/dateSelectors.js";
 selectGestationalAgeCriteria();
 
 // Setup date selectors for each prefix
-setupDateSelectorByPrefix('current');
+setupDateSelectorByPrefix("current", true);
