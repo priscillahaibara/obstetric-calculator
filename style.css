@@ -53,6 +53,10 @@ input {
   border-radius: 2px;
 }
 
+select:focus {
+  border-bottom: 2px solid #000; 
+}
+
 h1 {
   font-size: 4.4rem;
 }
