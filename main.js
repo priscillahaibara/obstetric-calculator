@@ -39,13 +39,26 @@ function gestationalAgeFromUsg(usgDate, usgAgeWeeks, usgAgeDays, currentDate) {
   const totalDays = usgAgeWeeks * 7 + usgAgeDays + diffDays;
   const weeks = Math.floor(totalDays / 7);
   const days = Math.floor(totalDays % 7);
-  return { weeks, days }
+  return { weeks, days };
 }
 
 function dueDateByLMP(lmpDate) {
   const dueDate = new Date(lmpDate);
   dueDate.setDate(dueDate.getDate() + 280);
   return dueDate;
+}
+
+function dueDateByUSG(usgDate, usgAgeWeeks, usgAgeDays) {
+  const dueDate = new Date(usgDate);
+  dueDate.setDate(dueDate.getDate() + 280 + usgAgeWeeks * 7 + usgAgeDays)
+  return dueDate;
+}
+
+function formatDate(date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`;
 }
 
 function calculateGestationalAge() {
@@ -62,8 +75,8 @@ function calculateGestationalAge() {
   const currentDate = getDateFromSelectors("current");
   const lmpDate = getDateFromSelectors("lmp");
   const usgDate = getDateFromSelectors("usg");
-  const usgAgeWeeks = Number(document.getElementById('usg-weeks').value);
-  const usgAgeDays = Number(document.getElementById('usg-days').value);
+  const usgAgeWeeks = Number(document.getElementById("usg-weeks").value);
+  const usgAgeDays = Number(document.getElementById("usg-days").value);
 
   /* Variables */
   let gestationalAge, dueDate;
@@ -72,7 +85,7 @@ function calculateGestationalAge() {
 
   if (selectCriteria === "last-menstrual-period") {
     gestationalAge = gestationalAgeFromLMP(lmpDate, currentDate);
-    dueDate = dueDateByLMP(lmpDate)
+    dueDate = dueDateByLMP(lmpDate);
   } else if (selectCriteria === "ultrasound") {
     gestationalAge = gestationalAgeFromUsg(
       usgDate,
@@ -80,13 +93,14 @@ function calculateGestationalAge() {
       usgAgeDays,
       currentDate
     );
+    dueDate = dueDateByUSG(usgDate, usgAgeWeeks, usgAgeDays);
   }
 
   if (gestationalAge && dueDate) {
     const dayText = gestationalAge.days > 1 ? "days" : "day";
 
     gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} weeks ${gestationalAge.days} ${dayText}`;
-    dueDateOutput.innerHTML = `<strong> Estimated Due Date:</strong> ${dueDate}`
+    dueDateOutput.innerHTML = `<strong> Estimated Due Date:</strong> ${formatDate(dueDate)}`;
   }
 }
 
