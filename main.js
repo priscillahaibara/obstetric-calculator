@@ -1,5 +1,6 @@
 import { selectGestationalAgeCriteria } from "./js/selectGestationalAgeCriteria.js";
 import { setupDateSelectorByPrefix } from "./js/dateSelectors.js";
+import { calculateGestationalAge } from "./js/calculateGestationalAge.js";
 
 // === main.js ===
 // Main entry point: initializes the calculator UI and interactive components.
@@ -14,3 +15,7 @@ selectGestationalAgeCriteria();
 setupDateSelectorByPrefix("current", true);
 setupDateSelectorByPrefix("lmp");
 setupDateSelectorByPrefix("usg");
+
+const calculatorButton = document.querySelector(".calculator__button");
+
+calculatorButton.addEventListener("click", () => calculateGestationalAge());
