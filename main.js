@@ -58,10 +58,9 @@ function calculateGestationalAge() {
   }
 
   if (gestationalAge) {
-    gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} weeks ${gestationalAge.days} days`;
+    const dayText = gestationalAge.days >1 ? 'days' : 'day';
+    gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} weeks ${gestationalAge.days} ${dayText}`;
   }
 }
 
-calculatorButton.addEventListener("click", () => {
-  calculateGestationalAge();
-});
+calculatorButton.addEventListener("click", () => calculateGestationalAge());
