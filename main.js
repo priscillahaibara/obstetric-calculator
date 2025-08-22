@@ -33,6 +33,15 @@ function gestationalAgeFromLMP(lmpDate, currentDate) {
   return { weeks, days };
 }
 
+function gestationalAgeFromUsg(usgDate, usgAgeWeeks, usgAgeDays, currentDate) {
+  const diffMs = currentDate - usgDate;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const totalDays = usgAgeWeeks * 7 + usgAgeDays + diffDays;
+  const weeks = Math.floor(totalDays / 7);
+  const days = Math.floor(totalDays % 7);
+  return { weeks, days }
+}
+
 function calculateGestationalAge() {
   /* Select elements */
   const selectCriteria = document.querySelector(
@@ -43,10 +52,12 @@ function calculateGestationalAge() {
   );
   const dueDateOutput = document.querySelector(".calculator__output--due-date");
 
-  /* Get dates */
+  /* Get Data */
   const currentDate = getDateFromSelectors("current");
   const lmpDate = getDateFromSelectors("lmp");
   const usgDate = getDateFromSelectors("usg");
+  const usgAgeWeeks = Number(document.getElementById('usg-weeks').value);
+  const usgAgeDays = Number(document.getElementById('usg-days').value);
 
   /* Variables */
   let gestationalAge, dueDate;
@@ -55,10 +66,17 @@ function calculateGestationalAge() {
 
   if (selectCriteria === "last-menstrual-period") {
     gestationalAge = gestationalAgeFromLMP(lmpDate, currentDate);
+  } else if (selectCriteria === "ultrasound") {
+    gestationalAge = gestationalAgeFromUsg(
+      usgDate,
+      usgAgeWeeks,
+      usgAgeDays,
+      currentDate
+    );
   }
 
   if (gestationalAge) {
-    const dayText = gestationalAge.days >1 ? 'days' : 'day';
+    const dayText = gestationalAge.days > 1 ? "days" : "day";
     gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} weeks ${gestationalAge.days} ${dayText}`;
   }
 }
