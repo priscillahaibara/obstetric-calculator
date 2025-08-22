@@ -31,7 +31,7 @@ export function selectGestationalAgeCriteria() {
       lmpField.style.display = "block";
       ultrasoundField.style.display = "none";
       calculatorButton.style.display = "block";
-      resultField.style.display = "none";
+      resultField.style.display = "block";
     }
     // If "Ultrasound" is selected, show ultrasound and current date fields, hide LMP
     else if (criteria === "ultrasound") {
@@ -39,7 +39,7 @@ export function selectGestationalAgeCriteria() {
       lmpField.style.display = "none";
       ultrasoundField.style.display = "block";
       calculatorButton.style.display = "block";
-      resultField.style.display = "none";
+      resultField.style.display = "block";
     }
   });
 }
