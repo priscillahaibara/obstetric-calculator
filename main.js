@@ -42,6 +42,12 @@ function gestationalAgeFromUsg(usgDate, usgAgeWeeks, usgAgeDays, currentDate) {
   return { weeks, days }
 }
 
+function dueDateByLMP(lmpDate) {
+  const dueDate = new Date(lmpDate);
+  dueDate.setDate(dueDate.getDate() + 280);
+  return dueDate;
+}
+
 function calculateGestationalAge() {
   /* Select elements */
   const selectCriteria = document.querySelector(
@@ -66,6 +72,7 @@ function calculateGestationalAge() {
 
   if (selectCriteria === "last-menstrual-period") {
     gestationalAge = gestationalAgeFromLMP(lmpDate, currentDate);
+    dueDate = dueDateByLMP(lmpDate)
   } else if (selectCriteria === "ultrasound") {
     gestationalAge = gestationalAgeFromUsg(
       usgDate,
@@ -75,9 +82,11 @@ function calculateGestationalAge() {
     );
   }
 
-  if (gestationalAge) {
+  if (gestationalAge && dueDate) {
     const dayText = gestationalAge.days > 1 ? "days" : "day";
+
     gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} weeks ${gestationalAge.days} ${dayText}`;
+    dueDateOutput.innerHTML = `<strong> Estimated Due Date:</strong> ${dueDate}`
   }
 }
 
