@@ -7,7 +7,7 @@ export function getDateFromSelectors(prefix) {
   return new Date(year, month - 1, day);
 }
 
-/*Calculates gestational age based on the last menstrual period (LMP). */
+/* Calculates gestational age based on the last menstrual period (LMP). */
 export function gestationalAgeFromLMP(lmpDate, currentDate) {
   // Difference in milliseconds
   const diffMs = currentDate - lmpDate;
@@ -33,7 +33,7 @@ export function gestationalAgeFromUsg(
   const totalDays = usgAgeWeeks * 7 + usgAgeDays + diffDays;
   // Convert total days to weeks and remaining days
   const weeks = Math.floor(totalDays / 7);
-  const days = Math.floor(totalDays % 7);
+  const days = totalDays % 7;
   return { weeks, days };
 }
 
@@ -47,9 +47,12 @@ export function calculateDueDateByLMP(lmpDate) {
 
 /* Calculates the estimated due date (EDD) based on an ultrasound date and gestational age. */
 export function calculateDueDateByUsg(usgDate, usgAgeWeeks, usgAgeDays) {
+  const gestationalDays = usgAgeWeeks * 7 + usgAgeDays;
+  // Remaining gestational days = 280 - age at USG
+  const remainingDays = 280 - gestationalDays;
   const dueDate = new Date(usgDate);
-  // Remaining gestational days = 280 - age at USG, then add days passed since USG
-  dueDate.setDate(dueDate.getDate() + 280 + usgAgeWeeks * 7 + usgAgeDays);
+  // Add remaining days to the ultrasound date
+  dueDate.setDate(dueDate.getDate() + remainingDays);
   return dueDate;
 }
 
