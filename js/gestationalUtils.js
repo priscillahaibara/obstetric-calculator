@@ -64,3 +64,29 @@ export function formatDate(date) {
   const year = date.getFullYear();
   return `${month}/${day}/${year}`;
 }
+
+export function validateUsgInput(usgAgeWeeks, usgAgeDays) {
+
+  // If any value is not a number, return invalid
+  if (isNaN(usgAgeWeeks) || isNaN(usgAgeDays) || !usgAgeWeeks || !usgAgeDays) {
+    return { valid: false, error: 'Invalid input. Weeks or days missing.'}
+  }
+
+  // Days must be between 0 and 6
+  if (usgAgeDays < 0 || usgAgeDays > 6) {
+    return { valid: false, error: 'Invalid input. Days must be between 0 and 6.'}
+  }
+
+  // Weeks cannot be negative
+  if (usgAgeWeeks < 0) {
+    return { valid: false, error: 'Invalid input. Weeks cannot be negative.'}
+  }
+
+  // Maximum gestational age: 42 weeks
+  if (usgAgeWeeks >42) {
+    return { valid: false, error: 'Invalid input. Gestational age exceeds typical range.'}
+  }
+
+  // If all checks pass, it is valid
+  return { valid: true }
+}
