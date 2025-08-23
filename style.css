@@ -90,6 +90,15 @@ p {
   color: #222;
 }
 
+/* Error message specifically for USG input */
+.calculator__input-error {
+  display: none;
+  font-size: 1.6rem;
+  color: #e74c3c;  
+  margin-left: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
 .calculator__output {
   margin-left: 0.8rem;
   margin-bottom: 1.2rem;

@@ -29,5 +29,13 @@ setupDateSelectorByPrefix("usg");           // Sets up USG date selectors
  * and estimated due date are calculated and displayed.
  */
 const calculatorButton = document.querySelector(".calculator__button");
+const inputError = document.querySelector('.calculator__input-error');
 
-calculatorButton.addEventListener("click", () => calculateGestationalAge());
+calculatorButton.addEventListener("click", () => {
+    if (inputError) {
+        inputError.innerHTML = '';
+        inputError.style.display = 'none'
+    }
+
+    calculateGestationalAge()
+});

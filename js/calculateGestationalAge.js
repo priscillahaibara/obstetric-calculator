@@ -27,6 +27,7 @@ export function calculateGestationalAge() {
     ".calculator__output--gestational-age"
   );
   const dueDateOutput = document.querySelector(".calculator__output--due-date");
+  const inputError = document.querySelector('.calculator__input-error')
 
   /* Get input data from the DOM */
   const currentDate = getDateFromSelectors("current");
@@ -49,7 +50,8 @@ export function calculateGestationalAge() {
     const validation = validateUsgInput(usgAgeWeeks, usgAgeDays);
 
     if (!validation.valid) {
-      gestationalAgeOutput.innerHTML = `<strong style="color: red">Error:</strong> ${validation.error}`
+      inputError.style.display = 'block';
+      inputError.innerHTML = `<strong>Error:</strong> ${validation.error}`
       dueDateOutput.innerHTML = '';
       return;
     } 
