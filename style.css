@@ -10,6 +10,10 @@
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
 */
 
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -35,7 +39,7 @@ header {
 main {
   max-width: 90rem;
   margin: 0 auto;
-  padding: 1.2rem;
+  padding: 2.4rem;
 }
 
 fieldset {
@@ -53,9 +57,16 @@ input {
   border-radius: 2px;
 }
 
-select:focus {
-  border-bottom: 2px solid #000; 
+select:focus,
+input:focus,
+button:focus {
+  border: 2px solid #000;
+  outline-offset: 2px;
 }
+
+/* ==========================================
+   TYPOGRAPHY
+   ========================================== */
 
 h1 {
   font-size: 4.4rem;
@@ -68,6 +79,10 @@ h2 {
 p {
   font-size: 1.8rem;
 }
+
+/* ==========================================
+   CALCULATOR STYLES
+   ========================================== */
 
 .header__logo {
   height: 6.4rem;
@@ -90,6 +105,15 @@ p {
   color: #222;
 }
 
+/* Error message specifically for USG input */
+.calculator__input-error {
+  display: none;
+  font-size: 1.6rem;
+  color: #e74c3c;
+  margin-left: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
 .calculator__output {
   margin-left: 0.8rem;
   margin-bottom: 1.2rem;
@@ -107,6 +131,7 @@ p {
   cursor: pointer;
 }
 
+/* Hide form sections initially; visibility controlled via selectGestationalAgeCriteria() */
 .calculator__fieldset--current-date,
 .calculator__fieldset--lmp,
 .calculator__fieldset--ultrasound,
@@ -115,6 +140,9 @@ p {
   display: none;
 }
 
+/* ==========================================
+   SAFARI-SPECIFIC OVERRIDES
+   ========================================== */
 @supports (-webkit-overflow-scrolling: touch) {
   select,
   button {
@@ -133,5 +161,16 @@ p {
     background-repeat: no-repeat;
     background-position: right 0.8rem center;
     background-size: 0.8rem auto;
+  }
+}
+
+/* ==========================================
+   MEDIA QUERIES
+   ========================================== */
+
+@media (max-width: 36em) {
+  /* Bellow 576px */
+  html {
+    font-size: 50%;
   }
 }
