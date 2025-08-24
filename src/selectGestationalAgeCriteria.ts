@@ -2,16 +2,16 @@ export function selectGestationalAgeCriteria() {
   // Select the main criteria dropdown and relevant sections of the form
   const selectCriteria = document.querySelector(
     ".calculator__select--criteria"
-  );
+  ) as HTMLSelectElement;
   const currentDateField = document.querySelector(
     ".calculator__fieldset--current-date"
-  );
-  const lmpField = document.querySelector(".calculator__fieldset--lmp");
+  ) as HTMLFieldSetElement;
+  const lmpField = document.querySelector(".calculator__fieldset--lmp") as HTMLFieldSetElement;
   const ultrasoundField = document.querySelector(
     ".calculator__fieldset--ultrasound"
-  );
-  const calculatorButton = document.querySelector(".calculator__button");
-  const resultField = document.querySelector(".calculator__fieldset--result");
+  ) as HTMLFieldSetElement;
+  const calculatorButton = document.querySelector(".calculator__button") as HTMLButtonElement;
+  const resultField = document.querySelector(".calculator__fieldset--result") as HTMLFieldSetElement;
 
   // Listen for changes on the criteria dropdown
   selectCriteria.addEventListener("change", () => {
