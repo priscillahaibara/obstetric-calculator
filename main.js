@@ -1,41 +1,41 @@
 import { selectGestationalAgeCriteria } from "./js/selectGestationalAgeCriteria.js";
-import { setupDateSelectorByPrefix } from "./js/dateSelectors.js";
+import { setupDateSelectorByPrefix } from "./js/generateDateSelectors.js";
 import { calculateGestationalAge } from "./js/calculateGestationalAge.js";
 
 // === main.js ===
-// Entry point for the gestational age calculator application.
-// This file initializes the UI components and hooks up event listeners.
+// Entry point for the gestational age calculator.
+// Initializes UI components and sets up event listeners.
 
 /* 1) Setup gestational age criteria dropdown
- * This dropdown allows the user to choose the calculation method:
- * - "Last Menstrual Period" (LMP)
- * - "Ultrasound" (USG)
- * The selection determines which input fields are shown/hidden.
+ * Lets the user choose the calculation method:
+ * - Last Menstrual Period (LMP)
+ * - Ultrasound (USG)
+ * The selection controls which input fields are displayed.
  */
 selectGestationalAgeCriteria();
 
 /* 2) Setup date selectors for current, LMP, and ultrasound dates
  * - Populates day/month/year dropdowns
- * - Updates the number of days dynamically based on selected month/year
- * - Optionally sets the current date for convenience (useCurrentDate = true)
+ * - Adjusts the number of days based on selected month/year
+ * - Optionally pre-fills the current date (if useCurrentDate = true)
  */
-setupDateSelectorByPrefix("current", true); // Sets up current date selectors
-setupDateSelectorByPrefix("lmp");           // Sets up LMP date selectors
-setupDateSelectorByPrefix("usg");           // Sets up USG date selectors
-
+setupDateSelectorByPrefix("current", true);
+setupDateSelectorByPrefix("lmp");
+setupDateSelectorByPrefix("usg");
 
 /* 3) Setup event listener for the calculate button
- * When the user clicks the "Calculate" button, the gestational age
- * and estimated due date are calculated and displayed.
+ * On click:
+ * - Clears any previous input errors
+ * - Calls the gestational age calculator
+ * - Displays gestational age and estimated due date
  */
 const calculatorButton = document.querySelector(".calculator__button");
-const inputError = document.querySelector('.calculator__input-error');
+const inputError = document.querySelector(".calculator__input-error");
 
 calculatorButton.addEventListener("click", () => {
-    if (inputError) {
-        inputError.innerHTML = '';
-        inputError.style.display = 'none'
-    }
-
-    calculateGestationalAge()
+  if (inputError) {
+    inputError.innerHTML = "";
+    inputError.style.display = "none";
+  }
+  calculateGestationalAge();
 });

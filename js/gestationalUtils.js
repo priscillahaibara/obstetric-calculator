@@ -65,6 +65,11 @@ export function formatDate(date) {
   return `${month}/${day}/${year}`;
 }
 
+/* Validates ultrasound input values.
+ * Ensures weeks and days are within realistic ranges:
+ * - Weeks: 0–42
+ * - Days: 0–6
+ */
 export function validateUsgInput(usgAgeWeeks, usgAgeDays) {
 
   // If any value is not a number, return invalid
