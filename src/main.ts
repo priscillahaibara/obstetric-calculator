@@ -29,8 +29,8 @@ setupDateSelectorByPrefix("usg");
  * - Calls the gestational age calculator
  * - Displays gestational age and estimated due date
  */
-const calculatorButton = document.querySelector(".calculator__button");
-const inputError = document.querySelector(".calculator__input-error");
+const calculatorButton = document.querySelector(".calculator__button")! as HTMLButtonElement ;
+const inputError = document.querySelector(".calculator__input-error") as HTMLParagraphElement;
 
 calculatorButton.addEventListener("click", () => {
   if (inputError) {

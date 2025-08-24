@@ -11,16 +11,19 @@ import { validateUsgInput } from "./gestationalUtils.js";
  */
 export function calculateGestationalAge() {
     /* Select DOM elements */
-    const selectCriteria = document.querySelector(".calculator__select--criteria").value;
+    const selectCriteriaEl = document.querySelector(".calculator__select--criteria");
     const gestationalAgeOutput = document.querySelector(".calculator__output--gestational-age");
     const dueDateOutput = document.querySelector(".calculator__output--due-date");
-    const inputError = document.querySelector('.calculator__input-error');
-    /* Get input data from the DOM */
+    const inputError = document.querySelector(".calculator__input-error");
+    const usgAgeWeeksEl = document.getElementById("usg-weeks");
+    const usgAgeDaysEl = document.getElementById("usg-days");
+    /* Get input data from the DOM  */
     const currentDate = getDateFromSelectors("current");
     const lmpDate = getDateFromSelectors("lmp");
     const usgDate = getDateFromSelectors("usg");
-    const usgAgeWeeks = Number(document.getElementById("usg-weeks").value, 10);
-    const usgAgeDays = Number(document.getElementById("usg-days").value, 10);
+    const selectCriteria = selectCriteriaEl.value;
+    const usgAgeWeeks = Number(usgAgeWeeksEl.value);
+    const usgAgeDays = Number(usgAgeDaysEl.value);
     /* Variables to store results */
     let gestationalAge, dueDate;
     /* Exit early if no criteria selected */
@@ -34,9 +37,9 @@ export function calculateGestationalAge() {
     else if (selectCriteria === "ultrasound") {
         const validation = validateUsgInput(usgAgeWeeks, usgAgeDays);
         if (!validation.valid) {
-            inputError.style.display = 'block';
+            inputError.style.display = "block";
             inputError.innerHTML = `<strong>Error:</strong> ${validation.error}`;
-            dueDateOutput.innerHTML = '';
+            dueDateOutput.innerHTML = "";
             return;
         }
         gestationalAge = gestationalAgeFromUsg(usgDate, usgAgeWeeks, usgAgeDays, currentDate);
@@ -44,8 +47,8 @@ export function calculateGestationalAge() {
     }
     /* Display results in the DOM */
     if (gestationalAge && dueDate) {
-        const dayText = gestationalAge.days > 1 ? "days" : "day";
-        const weekText = gestationalAge.weeks > 1 ? "weeks" : "week";
+        const dayText = gestationalAge.days === 1 ? "day" : "days";
+        const weekText = gestationalAge.weeks === 1 ? "week" : "weeks";
         gestationalAgeOutput.innerHTML = `<strong> Gestational Age:</strong> ${gestationalAge.weeks} ${weekText} ${gestationalAge.days} ${dayText}`;
         dueDateOutput.innerHTML = `<strong> Estimated Due Date:</strong> ${formatDate(dueDate)}`;
     }
