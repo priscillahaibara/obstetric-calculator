@@ -1,6 +1,6 @@
-import { selectGestationalAgeCriteria } from "./js/selectGestationalAgeCriteria.js";
-import { setupDateSelectorByPrefix } from "./js/generateDateSelectors.js";
-import { calculateGestationalAge } from "./js/calculateGestationalAge.js";
+import { selectGestationalAgeCriteria } from "./selectGestationalAgeCriteria.js";
+import { setupDateSelectorByPrefix } from "./generateDateSelectors.js";
+import { calculateGestationalAge } from "./calculateGestationalAge.js";
 
 // === main.js ===
 // Entry point for the gestational age calculator.
