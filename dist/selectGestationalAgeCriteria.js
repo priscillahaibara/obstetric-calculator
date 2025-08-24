@@ -35,4 +35,3 @@ export function selectGestationalAgeCriteria() {
         }
     });
 }
-//# sourceMappingURL=selectGestationalAgeCriteria.js.map

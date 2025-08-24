@@ -78,4 +78,3 @@ export function validateUsgInput(usgAgeWeeks, usgAgeDays) {
     // If all checks pass, it is valid
     return { valid: true };
 }
-//# sourceMappingURL=gestationalUtils.js.map

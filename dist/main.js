@@ -34,4 +34,3 @@ calculatorButton.addEventListener("click", () => {
     }
     calculateGestationalAge();
 });
-//# sourceMappingURL=main.js.map

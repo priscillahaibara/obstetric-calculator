@@ -73,4 +73,3 @@ export function setupDateSelectorByPrefix(prefix, useCurrentDate = false) {
         daySelect.value = today.getDate();
     }
 }
-//# sourceMappingURL=generateDateSelectors.js.map

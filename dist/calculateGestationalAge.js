@@ -50,4 +50,3 @@ export function calculateGestationalAge() {
         dueDateOutput.innerHTML = `<strong> Estimated Due Date:</strong> ${formatDate(dueDate)}`;
     }
 }
-//# sourceMappingURL=calculateGestationalAge.js.map
