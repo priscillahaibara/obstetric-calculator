@@ -131,6 +131,10 @@ p {
   cursor: pointer;
 }
 
+.calculator__button:hover {
+  background-color: #cccccc;
+}
+
 /* Hide form sections initially; visibility controlled via selectGestationalAgeCriteria() */
 .calculator__fieldset--current-date,
 .calculator__fieldset--lmp,
